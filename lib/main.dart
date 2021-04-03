@@ -332,7 +332,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               Column( children: [
                 Container(
-                  width: 200,
+                  width: 50,
                 )
               ],),
               Expanded(child: Container(
@@ -356,7 +356,7 @@ class _MyHomePageState extends State<MyHomePage> {
               )),
               Column( children: [
                 Container(
-                  width: 200,
+                  width: 50,
                 )
               ],),
             ],
