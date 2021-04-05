@@ -58,17 +58,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   String text = "hello";
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   void _getDate() {
     setState(() {
       text = myController.text;
@@ -118,6 +107,22 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _clearFields() {
+    setState(() {
+      myController.clear();
+      _grid1 = '';
+      _grid2 = '';
+      _grid3 = '';
+      _grid4 = '';
+      _grid5 = '';
+      _grid6 = '';
+      _grid7 = '';
+      _grid8 = '';
+      _grid9 = '';
+    });
+
+  }
+
   final myController = TextEditingController();
 
   @override
@@ -125,12 +130,6 @@ class _MyHomePageState extends State<MyHomePage> {
     // Clean up the controller when the widget is disposed.
     myController.dispose();
     super.dispose();
-  }
-
-  Row _displayRow() {
-    return Row(
-      children: [Text('$_counter')],
-    );
   }
 
   Row _buildFirstRow() {
@@ -278,6 +277,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -299,6 +300,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Expanded(
                   child: Container(
                 child: DateTimeField(
+                  key: formKey,
                   format: DateFormat("yyyy-MM-dd"),
                   controller: myController,
                   decoration: const InputDecoration(
@@ -336,7 +338,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       Expanded(child: _buildFirstRow()),
                       Expanded(child: _buildSecondRow()),
                       Expanded(child: _buildThirdRow()),
-                      //Expanded(child: _displayRow())
                     ]),
                   ),
                 ))
@@ -366,6 +367,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       "Clear",
                       style: TextStyle(color: Colors.white),
                     ),
+                    onPressed: _clearFields,
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.blue)),
@@ -379,13 +381,6 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _getDate,
-      //   tooltip: 'Get Grid',
-      //   child: Icon(Icons.add),
-      // ),
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
