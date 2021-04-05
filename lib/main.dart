@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'basic_number.dart';
 
-
 void main() {
   runApp(NumeroApp());
 }
@@ -90,20 +89,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
       _gridList[basicNumber] = _gridList[basicNumber] + basicNumber.toString();
 
-      int destinyNumber = getDestinyNumber(parsedDate.day, parsedDate.month, parsedDate.year);
+      int destinyNumber =
+          getDestinyNumber(parsedDate.day, parsedDate.month, parsedDate.year);
       debugPrint('$destinyNumber');
 
-      _gridList[destinyNumber] = _gridList[destinyNumber] + destinyNumber.toString();
+      _gridList[destinyNumber] =
+          _gridList[destinyNumber] + destinyNumber.toString();
 
-      if(parsedDate.day > 10) {
+      if (parsedDate.day > 10) {
         int dateUnit = getDateUnit(parsedDate.day);
         int dateTens = getDateTens(parsedDate.day);
-
 
         _gridList[dateUnit] = _gridList[dateUnit] + dateUnit.toString();
         _gridList[dateTens] = _gridList[dateTens] + dateTens.toString();
       }
-
 
       _grid1 = _gridList[1];
       _grid2 = _gridList[2];
@@ -115,13 +114,9 @@ class _MyHomePageState extends State<MyHomePage> {
       _grid8 = _gridList[8];
       _grid9 = _gridList[9];
 
-
       debugPrint('$_gridList');
     });
   }
-
-
-
 
   final myController = TextEditingController();
 
@@ -131,8 +126,6 @@ class _MyHomePageState extends State<MyHomePage> {
     myController.dispose();
     super.dispose();
   }
-
-
 
   Row _displayRow() {
     return Row(
@@ -146,176 +139,142 @@ class _MyHomePageState extends State<MyHomePage> {
       children: [
         Expanded(
             child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(color: Colors.blue, spreadRadius: 3),
-                ],
-              ),
-              child: Center(
-                  child: Text(
-                      '$_grid3')
-              ),
-              height: 100,
-            )),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(color: Colors.blue, spreadRadius: 3),
+            ],
+          ),
+          child: Center(child: Text('$_grid3')),
+          height: 100,
+        )),
         Expanded(
             child: Container(
-              // color: Colors.orange,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(color: Colors.blue, spreadRadius: 3),
-                ],
-              ),
-              child: Center(
-                child: Text(
-                  '$_grid1')
-              ),
-              height: 100,
-            )),
+          // color: Colors.orange,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(color: Colors.blue, spreadRadius: 3),
+            ],
+          ),
+          child: Center(child: Text('$_grid1')),
+          height: 100,
+        )),
         Expanded(
             child: Container(
-              //color: Colors.green,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(color: Colors.blue, spreadRadius: 3),
-                ],
-              ),
-              height: 100,
-              child: Center(
-                  child: Text(
-                      '$_grid9')
-              ),
-            )),
+          //color: Colors.green,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(color: Colors.blue, spreadRadius: 3),
+            ],
+          ),
+          height: 100,
+          child: Center(child: Text('$_grid9')),
+        )),
       ],
     );
     return rows;
   }
+
   Row _buildSecondRow() {
     Widget rows = Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Expanded(
             child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(color: Colors.blue, spreadRadius: 3),
-                ],
-              ),
-              //child: Text('$text'),
-              child: Center(
-                  child: Text(
-                      '$_grid6')
-              ),
-              height: 100,
-            )),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(color: Colors.blue, spreadRadius: 3),
+            ],
+          ),
+          //child: Text('$text'),
+          child: Center(child: Text('$_grid6')),
+          height: 100,
+        )),
         Expanded(
             child: Container(
-              // color: Colors.orange,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(color: Colors.blue, spreadRadius: 3),
-                ],
-              ),
-              child: Center(
-                  child: Text(
-                      '$_grid7')
-              ),
-              height: 100,
-            )),
+          // color: Colors.orange,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(color: Colors.blue, spreadRadius: 3),
+            ],
+          ),
+          child: Center(child: Text('$_grid7')),
+          height: 100,
+        )),
         Expanded(
             child: Container(
-              //color: Colors.green,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(color: Colors.blue, spreadRadius: 3),
-                ],
-              ),
-              height: 100,
-              child: Center(
-                  child: Text(
-                      '$_grid5')
-              ),
-            )),
+          //color: Colors.green,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(color: Colors.blue, spreadRadius: 3),
+            ],
+          ),
+          height: 100,
+          child: Center(child: Text('$_grid5')),
+        )),
       ],
     );
     return rows;
   }
+
   Row _buildThirdRow() {
     Widget rows = Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Expanded(
             child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(color: Colors.blue, spreadRadius: 3),
-                ],
-              ),
-              //child: Text('$text'),
-              child: Center(
-                  child: Text(
-                      '$_grid2')
-              ),
-              height: 100,
-            )),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(color: Colors.blue, spreadRadius: 3),
+            ],
+          ),
+          //child: Text('$text'),
+          child: Center(child: Text('$_grid2')),
+          height: 100,
+        )),
         Expanded(
             child: Container(
-              // color: Colors.orange,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(color: Colors.blue, spreadRadius: 3),
-                ],
-              ),
-              child: Center(
-                  child: Text(
-                      '$_grid8')
-              ),
-              height: 100,
-            )),
+          // color: Colors.orange,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(color: Colors.blue, spreadRadius: 3),
+            ],
+          ),
+          child: Center(child: Text('$_grid8')),
+          height: 100,
+        )),
         Expanded(
             child: Container(
-              //color: Colors.green,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(color: Colors.blue, spreadRadius: 3),
-                ],
-              ),
-              height: 100,
-              child: Center(
-                  child: Text(
-                      '$_grid4')
-              ),
-            )),
+          //color: Colors.green,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(color: Colors.blue, spreadRadius: 3),
+            ],
+          ),
+          height: 100,
+          child: Center(child: Text('$_grid4')),
+        )),
       ],
     );
     return rows;
   }
-
-  
-  Widget datePicker = TextFormField(
-      decoration: const InputDecoration(
-        icon: Icon(Icons.person),
-        hintText: 'What do people call you?',
-        labelText: 'Name *',
-      ));
-
 
   @override
   Widget build(BuildContext context) {
@@ -330,20 +289,22 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Row(
             children: [
-              Column( children: [
-                Container(
-                  width: 50,
-                )
-              ],),
-              Expanded(child: Container(
+              Column(
+                children: [
+                  Container(
+                    width: 50,
+                  )
+                ],
+              ),
+              Expanded(
+                  child: Container(
                 child: DateTimeField(
                   format: DateFormat("yyyy-MM-dd"),
                   controller: myController,
                   decoration: const InputDecoration(
                       icon: Icon(Icons.date_range),
-                    labelText: "Birth Date",
-                    hoverColor: Colors.blue
-                  ),
+                      labelText: "Birth Date",
+                      hoverColor: Colors.blue),
                   onShowPicker: (context, currentValue) {
                     return showDatePicker(
                         context: context,
@@ -351,52 +312,80 @@ class _MyHomePageState extends State<MyHomePage> {
                         initialDate: currentValue ?? DateTime.now(),
                         lastDate: DateTime(2100));
                   },
-                )
-                ,
+                ),
               )),
-              Column( children: [
-                Container(
-                  width: 50,
-                )
-              ],),
+              Column(
+                children: [
+                  Container(
+                    width: 50,
+                  )
+                ],
+              ),
             ],
           ),
           Expanded(
             child: Row(children: [
               Expanded(
                   child: Column(children: [
-                    Expanded(
-                        child: Center(
-                          child: Container(
-                            height: 300,
-                            width: 300,
-                            child: Column(children: [
-                              Expanded(child: _buildFirstRow()),
-                              Expanded(child: _buildSecondRow()),
-                              Expanded(child: _buildThirdRow()),
-                              //Expanded(child: _displayRow())
-                            ]),
-                          ),
-                        ))
-                  ]))
+                Expanded(
+                    child: Center(
+                  child: Container(
+                    height: 300,
+                    width: 300,
+                    child: Column(children: [
+                      Expanded(child: _buildFirstRow()),
+                      Expanded(child: _buildSecondRow()),
+                      Expanded(child: _buildThirdRow()),
+                      //Expanded(child: _displayRow())
+                    ]),
+                  ),
+                ))
+              ]))
             ]),
+          ),
+          Column(
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: 50,
+                  ),
+                  Expanded(
+                      child: TextButton(
+                          child: Text("Get grid",
+                              style: TextStyle(color: Colors.white)),
+                          onPressed: _getDate,
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.blue),
+                          ))),
+                  Container(width: 20),
+                  Expanded(
+                      child: TextButton(
+                    child: Text(
+                      "Clear",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.blue)),
+                  )),
+                  Container(
+                    width: 50,
+                  )
+                ],
+              )
+            ],
           )
         ],
       ),
 
-      floatingActionButton: FloatingActionButton(
-        onPressed: _getDate,
-        // onPressed: () {
-        //   return showDialog(context: context,
-        //       builder: (context) {
-        //       return AlertDialog(
-        //         content: Text(myController.text),
-        //       );
-        //       });
-        // },
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _getDate,
+      //   tooltip: 'Get Grid',
+      //   child: Icon(Icons.add),
+      // ),
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
