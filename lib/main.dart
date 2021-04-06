@@ -19,13 +19,15 @@ class NumeroApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      //home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  //MyHomePage({Key key, this.title}) : super(key: key);
+
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -36,7 +38,7 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
+  //final String title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -130,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-  Row _buildFirstRow() {
+  Widget _buildFirstRow() {
     Widget rows = Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -177,7 +179,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return rows;
   }
 
-  Row _buildSecondRow() {
+  Widget _buildSecondRow() {
     Widget rows = Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -225,7 +227,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return rows;
   }
 
-  Row _buildThirdRow() {
+  Widget _buildThirdRow() {
     Widget rows = Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -273,16 +275,12 @@ class _MyHomePageState extends State<MyHomePage> {
     return rows;
   }
 
+  int _value = 1;
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
-    String dropdownValue = 'one';
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+
+
     return Scaffold(
       body: Column(
         children: [
@@ -346,28 +344,31 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 15,
               ),
               Expanded(
-                child: DropdownButton<String>(
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.blue
-                  ),
-                  value: "one",
+                child: DropdownButton(
+                    value: _value,
                     items: [
                       DropdownMenuItem(
-                        child: Text("Year"),
-                        value: "one",
+                        child: Text("First Item"),
+                        value: 1,
                       ),
                       DropdownMenuItem(
-                        child: Text("two"),
-                        value: "two",
+                        child: Text("Second Item"),
+                        value: 2,
+                      ),
+                      DropdownMenuItem(
+                          child: Text("Third Item"),
+                          value: 3
+                      ),
+                      DropdownMenuItem(
+                          child: Text("Fourth Item"),
+                          value: 4
                       )
                     ],
-                    onChanged: (value) {
+                    onChanged: (int? value) {
                       setState(() {
-                        dropdownValue = value;
+                        _value = value!;
                       });
-                    }
-                ),
+                    }),
               ),
               Column(
                 children: [
