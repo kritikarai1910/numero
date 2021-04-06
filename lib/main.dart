@@ -43,7 +43,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   String _grid1 = '';
   String _grid2 = '';
   String _grid3 = '';
@@ -120,7 +119,6 @@ class _MyHomePageState extends State<MyHomePage> {
       _grid8 = '';
       _grid9 = '';
     });
-
   }
 
   final myController = TextEditingController();
@@ -278,7 +276,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
-
+    String dropdownValue = 'one';
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -300,6 +298,10 @@ class _MyHomePageState extends State<MyHomePage> {
               Expanded(
                   child: Container(
                 child: DateTimeField(
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.blue,
+                  ),
                   key: formKey,
                   format: DateFormat("yyyy-MM-dd"),
                   controller: myController,
@@ -323,6 +325,57 @@ class _MyHomePageState extends State<MyHomePage> {
                   )
                 ],
               ),
+            ],
+          ),
+          Row(
+            children: [
+              Column(
+                children: [
+                  Container(
+                    width: 50,
+                  )
+                ],
+              ),
+              Container(child:
+
+               Icon(
+                  Icons.timeline
+                ),
+              ),
+              Container(
+                width: 15,
+              ),
+              Expanded(
+                child: DropdownButton<String>(
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.blue
+                  ),
+                  value: "one",
+                    items: [
+                      DropdownMenuItem(
+                        child: Text("Year"),
+                        value: "one",
+                      ),
+                      DropdownMenuItem(
+                        child: Text("two"),
+                        value: "two",
+                      )
+                    ],
+                    onChanged: (value) {
+                      setState(() {
+                        dropdownValue = value;
+                      });
+                    }
+                ),
+              ),
+              Column(
+                children: [
+                  Container(
+                    width: 50,
+                  )
+                ],
+              )
             ],
           ),
           Expanded(
