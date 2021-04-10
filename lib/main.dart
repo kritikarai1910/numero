@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'basic_number.dart';
+import 'grid.dart';
 
 void main() {
   runApp(NumeroApp());
@@ -132,96 +133,41 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
+
+  Container _getGridBox(String text) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(color: Colors.blue, spreadRadius: 3),
+        ],
+      ),
+      height: 100,
+      child: Center(child: Text('$text')),
+    );
+  }
+
   Widget _buildFirstRow() {
     Widget rows = Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Expanded(
-            child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(color: Colors.blue, spreadRadius: 3),
-            ],
-          ),
-          child: Center(child: Text('$_grid3')),
-          height: 100,
-        )),
-        Expanded(
-            child: Container(
-          // color: Colors.orange,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(color: Colors.blue, spreadRadius: 3),
-            ],
-          ),
-          child: Center(child: Text('$_grid1')),
-          height: 100,
-        )),
-        Expanded(
-            child: Container(
-          //color: Colors.green,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(color: Colors.blue, spreadRadius: 3),
-            ],
-          ),
-          height: 100,
-          child: Center(child: Text('$_grid9')),
-        )),
+        Expanded(child: _getGridBox(_grid3)),
+        Expanded(child: _getGridBox(_grid1)),
+        Expanded(child: _getGridBox(_grid9))
+
       ],
     );
     return rows;
   }
-
   Widget _buildSecondRow() {
     Widget rows = Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Expanded(
-            child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(color: Colors.blue, spreadRadius: 3),
-            ],
-          ),
-          //child: Text('$text'),
-          child: Center(child: Text('$_grid6')),
-          height: 100,
-        )),
-        Expanded(
-            child: Container(
-          // color: Colors.orange,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(color: Colors.blue, spreadRadius: 3),
-            ],
-          ),
-          child: Center(child: Text('$_grid7')),
-          height: 100,
-        )),
-        Expanded(
-            child: Container(
-          //color: Colors.green,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(color: Colors.blue, spreadRadius: 3),
-            ],
-          ),
-          height: 100,
-          child: Center(child: Text('$_grid5')),
-        )),
+        Expanded(child: _getGridBox(_grid6)),
+        Expanded(child: _getGridBox(_grid7)),
+        Expanded(child: _getGridBox(_grid5))
+
       ],
     );
     return rows;
@@ -231,54 +177,19 @@ class _MyHomePageState extends State<MyHomePage> {
     Widget rows = Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Expanded(
-            child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(color: Colors.blue, spreadRadius: 3),
-            ],
-          ),
-          //child: Text('$text'),
-          child: Center(child: Text('$_grid2')),
-          height: 100,
-        )),
-        Expanded(
-            child: Container(
-          // color: Colors.orange,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(color: Colors.blue, spreadRadius: 3),
-            ],
-          ),
-          child: Center(child: Text('$_grid8')),
-          height: 100,
-        )),
-        Expanded(
-            child: Container(
-          //color: Colors.green,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(color: Colors.blue, spreadRadius: 3),
-            ],
-          ),
-          height: 100,
-          child: Center(child: Text('$_grid4')),
-        )),
+        Expanded(child: _getGridBox(_grid2)),
+        Expanded(child: _getGridBox(_grid8)),
+        Expanded(child: _getGridBox(_grid4))
+
       ],
     );
     return rows;
   }
-
+  
   List<DropdownMenuItem<int>> getItems() {
     String year = "19";
     List<DropdownMenuItem<int>> items = [];
-    
+
     for(int i =50;i< 100; i++)
     items.add(DropdownMenuItem(child: Text(year + i.toString()),
     value: i,));
