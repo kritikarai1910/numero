@@ -27,20 +27,6 @@ class NumeroApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  //MyHomePage({Key key, this.title}) : super(key: key);
-
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  //final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -147,45 +133,18 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Center(child: Text('$text')),
     );
   }
-
-  Widget _buildFirstRow() {
-    Widget rows = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Expanded(child: _getGridBox(_grid3)),
-        Expanded(child: _getGridBox(_grid1)),
-        Expanded(child: _getGridBox(_grid9))
-
-      ],
-    );
-    return rows;
-  }
-  Widget _buildSecondRow() {
-    Widget rows = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Expanded(child: _getGridBox(_grid6)),
-        Expanded(child: _getGridBox(_grid7)),
-        Expanded(child: _getGridBox(_grid5))
-
-      ],
-    );
-    return rows;
-  }
-
-  Widget _buildThirdRow() {
-    Widget rows = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Expanded(child: _getGridBox(_grid2)),
-        Expanded(child: _getGridBox(_grid8)),
-        Expanded(child: _getGridBox(_grid4))
-
-      ],
-    );
-    return rows;
-  }
   
+  Widget _buildRow(String box1, String box2, String box3) {
+    Widget rows = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Expanded(child: _getGridBox(box1)),
+        Expanded(child: _getGridBox(box2)),
+        Expanded(child: _getGridBox(box3))
+      ],
+    );
+    return rows;
+  }
   List<DropdownMenuItem<int>> getItems() {
     String year = "19";
     List<DropdownMenuItem<int>> items = [];
@@ -310,9 +269,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 300,
                     width: 300,
                     child: Column(children: [
-                      Expanded(child: _buildFirstRow()),
-                      Expanded(child: _buildSecondRow()),
-                      Expanded(child: _buildThirdRow()),
+                      Expanded(child: _buildRow(_grid3, _grid1, _grid9)),
+                      Expanded(child: _buildRow(_grid6, _grid7, _grid5)),
+                      Expanded(child: _buildRow(_grid2, _grid8, _grid4)),
                     ]),
                   ),
                 ))
