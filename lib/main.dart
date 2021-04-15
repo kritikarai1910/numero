@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'basic_number.dart';
-import 'grid.dart';
 
 void main() {
   runApp(NumeroApp());
@@ -119,7 +118,6 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-
   Container _getGridBox(String text) {
     return Container(
       decoration: BoxDecoration(
@@ -133,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Center(child: Text('$text')),
     );
   }
-  
+
   Widget _buildRow(String box1, String box2, String box3) {
     Widget rows = Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -145,37 +143,95 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     return rows;
   }
+
+  Widget _getDateTimePicker(GlobalKey<FormState> formKey) {
+    return DateTimeField(
+      style: TextStyle(fontSize: 15),
+      key: formKey,
+      format: DateFormat("yyyy-MM-dd"),
+      controller: myController,
+      decoration: const InputDecoration(
+          icon: Icon(Icons.date_range),
+          labelText: "Birth Date",
+          hoverColor: Colors.blue),
+      onShowPicker: (context, currentValue) {
+        return showDatePicker(
+            context: context,
+            firstDate: DateTime(1900),
+            initialDate: currentValue ?? DateTime.now(),
+            lastDate: DateTime(2100));
+      },
+    );
+  }
+
+  Widget _getYearDropdown() {
+    return DropdownButton(
+        value: _value,
+        items: getItems(),
+        onChanged: (int? value) {
+          setState(() {
+            _value = value!;
+          });
+        });
+  }
+
   List<DropdownMenuItem<int>> getItems() {
     String year = "19";
     List<DropdownMenuItem<int>> items = [];
 
-    for(int i =50;i< 100; i++)
-    items.add(DropdownMenuItem(child: Text(year + i.toString()),
-    value: i,));
-
+    for (int i = 50; i < 100; i++)
+      items.add(DropdownMenuItem(
+        child: Text(year + i.toString()),
+        value: i,
+      ));
 
     year = "200";
 
-    for(int i =0;i< 10; i++)
-      items.add(DropdownMenuItem(child: Text(year + i.toString()),
-        value: i,));
-
+    for (int i = 0; i < 10; i++)
+      items.add(DropdownMenuItem(
+        child: Text(year + i.toString()),
+        value: i,
+      ));
 
     year = "20";
 
-    for(int i =10;i< 50; i++)
-      items.add(DropdownMenuItem(child: Text(year + i.toString()),
-        value: i,));
+    for (int i = 10; i < 50; i++)
+      items.add(DropdownMenuItem(
+        child: Text(year + i.toString()),
+        value: i,
+      ));
     return items;
+  }
 
+  Widget _getClearButton() {
+    return TextButton(
+      child: Text(
+        "Clear",
+        style: TextStyle(color: Colors.white),
+      ),
+      onPressed: _clearFields,
+      style:
+          ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue)),
+    );
+  }
 
+  Widget _getGridButton() {
+    return TextButton(
+      child: Text(
+        "Get Grid",
+        style: TextStyle(color: Colors.white),
+      ),
+      onPressed: _getDate,
+      style:
+          ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue)),
+    );
   }
 
   int _value = 50;
+
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
-
 
     return Scaffold(
       body: Column(
@@ -189,29 +245,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   )
                 ],
               ),
-              Expanded(
-                  child: Container(
-                child: DateTimeField(
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.blue,
-                  ),
-                  key: formKey,
-                  format: DateFormat("yyyy-MM-dd"),
-                  controller: myController,
-                  decoration: const InputDecoration(
-                      icon: Icon(Icons.date_range),
-                      labelText: "Birth Date",
-                      hoverColor: Colors.blue),
-                  onShowPicker: (context, currentValue) {
-                    return showDatePicker(
-                        context: context,
-                        firstDate: DateTime(1900),
-                        initialDate: currentValue ?? DateTime.now(),
-                        lastDate: DateTime(2100));
-                  },
-                ),
-              )),
+              Expanded(child: Container(child: _getDateTimePicker(formKey))),
               Column(
                 children: [
                   Container(
@@ -230,25 +264,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   )
                 ],
               ),
-              Container(child:
-
-               Icon(
-                  Icons.timeline
-                ),
+              Container(
+                child: Icon(Icons.timeline),
               ),
               Container(
                 width: 15,
               ),
               Expanded(
-                child: DropdownButton(
-                    value: _value,
-                    items:
-                      getItems(),
-                    onChanged: (int? value) {
-                      setState(() {
-                        _value = value!;
-                      });
-                    }),
+                child: _getYearDropdown(),
               ),
               Column(
                 children: [
@@ -285,27 +308,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   Container(
                     width: 50,
                   ),
-                  Expanded(
-                      child: TextButton(
-                          child: Text("Get grid",
-                              style: TextStyle(color: Colors.white)),
-                          onPressed: _getDate,
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.blue),
-                          ))),
+                  Expanded(child: _getGridButton()),
                   Container(width: 20),
-                  Expanded(
-                      child: TextButton(
-                    child: Text(
-                      "Clear",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onPressed: _clearFields,
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.blue)),
-                  )),
+                  Expanded(child: _getClearButton()),
                   Container(
                     width: 50,
                   )
