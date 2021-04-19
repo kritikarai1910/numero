@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:numero/grid.dart';
 import 'basic_number.dart';
+import 'gird_buttons.dart';
 
 void main() {
   runApp(NumeroApp());
@@ -19,7 +21,6 @@ class NumeroApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      //home: MyHomePage(title: 'Flutter Demo Home Page'),
       home: MyHomePage(),
     );
   }
@@ -272,6 +273,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Expanded(
                 child: _getYearDropdown(),
+
               ),
               Column(
                 children: [
@@ -314,6 +316,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   Container(
                     width: 50,
                   )
+                ],
+              ),
+              Row(
+                children: [
+                  TryClass()
                 ],
               )
             ],
