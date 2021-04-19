@@ -272,13 +272,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 15,
               ),
               Expanded(
-                child: _getYearDropdown(),
+                //child: _getYearDropdown(),
+                child: Container(
+                  height: 50,
+                  //width: 2000,
 
+                  child: GridButtons(),
+                ),
               ),
               Column(
                 children: [
                   Container(
                     width: 50,
+                    color: Colors.blue,
                   )
                 ],
               )
@@ -320,8 +326,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Row(
                 children: [
-                  TryClass()
-                ],
+                  SizedBox(
+              child: Text("this is awesome")
+                  //StatlessTryClass()
+                  )],
               )
             ],
           )

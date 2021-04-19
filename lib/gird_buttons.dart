@@ -82,17 +82,15 @@ class _GridButtonState extends State<GridButtons> {
   Widget build(BuildContext context) {
     return Scaffold(
         body:
-            SizedBox(
-              width: 100,
-            height: 100,
+
             //child: _getYearDropdown()
-          child: DropdownButton(
+          DropdownButton(
                 value: _value,
                 items: getItems(),
                 onChanged: (int? value) {
                   setState(() {
                     _value = value!;
                   });
-                })));
+                }));
   }
 }
