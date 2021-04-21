@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
-import 'package:numero/grid.dart';
 import 'basic_number.dart';
-import 'gird_buttons.dart';
+import 'numero_year_dropdown.dart';
+import 'numero_date_picker.dart';
 
 void main() {
   runApp(NumeroApp());
@@ -246,7 +246,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   )
                 ],
               ),
-              Expanded(child: Container(child: _getDateTimePicker(formKey))),
+              Expanded(child: Container(
+                height: 50,
+                  child: NumeroDatePicker(myController)
+              )),
               Column(
                 children: [
                   Container(
@@ -277,7 +280,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 50,
                   //width: 2000,
 
-                  child: GridButtons(),
+                  child: NumeroYearDropdown(),
                 ),
               ),
               Column(
