@@ -7,6 +7,7 @@ import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'basic_number.dart';
 import 'numero_year_dropdown.dart';
 import 'numero_date_picker.dart';
+import 'grid.dart';
 
 void main() {
   runApp(NumeroApp());
@@ -145,65 +146,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return rows;
   }
 
-  Widget _getDateTimePicker(GlobalKey<FormState> formKey) {
-    return DateTimeField(
-      style: TextStyle(fontSize: 15),
-      key: formKey,
-      format: DateFormat("yyyy-MM-dd"),
-      controller: myController,
-      decoration: const InputDecoration(
-          icon: Icon(Icons.date_range),
-          labelText: "Birth Date",
-          hoverColor: Colors.blue),
-      onShowPicker: (context, currentValue) {
-        return showDatePicker(
-            context: context,
-            firstDate: DateTime(1900),
-            initialDate: currentValue ?? DateTime.now(),
-            lastDate: DateTime(2100));
-      },
-    );
-  }
-
-  Widget _getYearDropdown() {
-    return DropdownButton(
-        value: _value,
-        items: getItems(),
-        onChanged: (int? value) {
-          setState(() {
-            _value = value!;
-          });
-        });
-  }
-
-  List<DropdownMenuItem<int>> getItems() {
-    String year = "19";
-    List<DropdownMenuItem<int>> items = [];
-
-    for (int i = 50; i < 100; i++)
-      items.add(DropdownMenuItem(
-        child: Text(year + i.toString()),
-        value: i,
-      ));
-
-    year = "200";
-
-    for (int i = 0; i < 10; i++)
-      items.add(DropdownMenuItem(
-        child: Text(year + i.toString()),
-        value: i,
-      ));
-
-    year = "20";
-
-    for (int i = 10; i < 50; i++)
-      items.add(DropdownMenuItem(
-        child: Text(year + i.toString()),
-        value: i,
-      ));
-    return items;
-  }
-
   Widget _getClearButton() {
     return TextButton(
       child: Text(
@@ -227,8 +169,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue)),
     );
   }
-
-  int _value = 50;
 
   @override
   Widget build(BuildContext context) {
@@ -303,9 +243,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 300,
                     width: 300,
                     child: Column(children: [
-                      Expanded(child: _buildRow(_grid3, _grid1, _grid9)),
-                      Expanded(child: _buildRow(_grid6, _grid7, _grid5)),
-                      Expanded(child: _buildRow(_grid2, _grid8, _grid4)),
+                      Expanded(child: NumeroGrid(_grid3,_grid1, _grid9)),
+                      Expanded(child: NumeroGrid(_grid6, _grid7, _grid5)),
+                      Expanded(child: NumeroGrid(_grid2, _grid8, _grid4)),
                     ]),
                   ),
                 ))
@@ -327,13 +267,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   )
                 ],
               ),
-              Row(
-                children: [
-                  SizedBox(
-              child: Text("this is awesome")
-                  //StatlessTryClass()
-                  )],
-              )
             ],
           )
         ],
