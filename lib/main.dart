@@ -119,33 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
     myController.dispose();
     super.dispose();
   }
-
-  Container _getGridBox(String text) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(color: Colors.blue, spreadRadius: 3),
-        ],
-      ),
-      height: 100,
-      child: Center(child: Text('$text')),
-    );
-  }
-
-  Widget _buildRow(String box1, String box2, String box3) {
-    Widget rows = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Expanded(child: _getGridBox(box1)),
-        Expanded(child: _getGridBox(box2)),
-        Expanded(child: _getGridBox(box3))
-      ],
-    );
-    return rows;
-  }
-
+  
   Widget _getClearButton() {
     return TextButton(
       child: Text(
@@ -172,8 +146,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
-
     return Scaffold(
       body: Column(
         children: [
