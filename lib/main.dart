@@ -32,19 +32,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  //String _grid1 = '';
-  String _grid2 = '';
-  String _grid3 = '';
-  String _grid4 = '';
-  String _grid5 = '';
-  String _grid6 = '';
-  String _grid7 = '';
-  String _grid8 = '';
-  String _grid9 = '';
+
 
   var _gridList = List<String>.filled(10, '');
 
-  String text = "hello";
+  String text = "";
 
   void _getDate() {
     setState(() {
@@ -80,18 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
         _gridList[dateUnit] = _gridList[dateUnit] + dateUnit.toString();
         _gridList[dateTens] = _gridList[dateTens] + dateTens.toString();
       }
-
-      GridValues.grid1 = _gridList[1];
-      //_grid1 = _gridList[1];
-      GridValues.grid2 = _gridList[2];
-      GridValues.grid3 = _gridList[3];
-      GridValues.grid4 = _gridList[4];
-      GridValues.grid5 = _gridList[5];
-      GridValues.grid6 = _gridList[6];
-      GridValues.grid7 = _gridList[7];
-      GridValues.grid8 = _gridList[8];
-      GridValues.grid9 = _gridList[9];
-
+      GridValues.setGridValues(_gridList);
       debugPrint('$_gridList');
     });
   }
@@ -99,16 +80,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void _clearFields() {
     setState(() {
       myController.clear();
-      //_grid1 = '';
-      GridValues.grid1 ='';
-      GridValues.grid2 = '';
-      GridValues.grid3 = '';
-      GridValues.grid4 = '';
-      GridValues.grid5 = '';
-      GridValues.grid6 = '';
-      GridValues.grid7 = '';
-      GridValues.grid8 = '';
-      GridValues.grid9 = '';
+      GridValues.clearGridValues();
+      _gridList = List<String>.filled(10, '');
     });
   }
 
