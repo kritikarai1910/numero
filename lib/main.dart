@@ -6,6 +6,7 @@ import 'basic_number.dart';
 import 'numero_year_dropdown.dart';
 import 'numero_date_picker.dart';
 import 'grid.dart';
+import 'grid_values.dart';
 
 void main() {
   runApp(NumeroApp());
@@ -31,7 +32,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _grid1 = '';
+  //String _grid1 = '';
   String _grid2 = '';
   String _grid3 = '';
   String _grid4 = '';
@@ -80,15 +81,16 @@ class _MyHomePageState extends State<MyHomePage> {
         _gridList[dateTens] = _gridList[dateTens] + dateTens.toString();
       }
 
-      _grid1 = _gridList[1];
-      _grid2 = _gridList[2];
-      _grid3 = _gridList[3];
-      _grid4 = _gridList[4];
-      _grid5 = _gridList[5];
-      _grid6 = _gridList[6];
-      _grid7 = _gridList[7];
-      _grid8 = _gridList[8];
-      _grid9 = _gridList[9];
+      GridValues.grid1 = _gridList[1];
+      //_grid1 = _gridList[1];
+      GridValues.grid2 = _gridList[2];
+      GridValues.grid3 = _gridList[3];
+      GridValues.grid4 = _gridList[4];
+      GridValues.grid5 = _gridList[5];
+      GridValues.grid6 = _gridList[6];
+      GridValues.grid7 = _gridList[7];
+      GridValues.grid8 = _gridList[8];
+      GridValues.grid9 = _gridList[9];
 
       debugPrint('$_gridList');
     });
@@ -97,15 +99,16 @@ class _MyHomePageState extends State<MyHomePage> {
   void _clearFields() {
     setState(() {
       myController.clear();
-      _grid1 = '';
-      _grid2 = '';
-      _grid3 = '';
-      _grid4 = '';
-      _grid5 = '';
-      _grid6 = '';
-      _grid7 = '';
-      _grid8 = '';
-      _grid9 = '';
+      //_grid1 = '';
+      GridValues.grid1 ='';
+      GridValues.grid2 = '';
+      GridValues.grid3 = '';
+      GridValues.grid4 = '';
+      GridValues.grid5 = '';
+      GridValues.grid6 = '';
+      GridValues.grid7 = '';
+      GridValues.grid8 = '';
+      GridValues.grid9 = '';
     });
   }
 
@@ -213,9 +216,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 300,
                     width: 300,
                     child: Column(children: [
-                      Expanded(child: NumeroGrid(_grid3,_grid1, _grid9)),
-                      Expanded(child: NumeroGrid(_grid6, _grid7, _grid5)),
-                      Expanded(child: NumeroGrid(_grid2, _grid8, _grid4)),
+                      Expanded(child: NumeroGrid(GridValues.grid3,GridValues.grid1, GridValues.grid9)),
+                      Expanded(child: NumeroGrid(GridValues.grid6, GridValues.grid7, GridValues.grid5)),
+                      Expanded(child: NumeroGrid(GridValues.grid2, GridValues.grid8, GridValues.grid4)),
                     ]),
                   ),
                 ))
