@@ -161,11 +161,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 15,
               ),
               Expanded(
-                //child: _getYearDropdown(),
                 child: Container(
                   height: 50,
                   //width: 2000,
-
                   child: NumeroYearDropdown(),
                 ),
               ),
@@ -180,11 +178,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
           Expanded(
-            child: Row(children: [
-              Expanded(
-                  child: Column(children: [
-                Expanded(
-                    child: Center(
+           child: Center(
                   child: Container(
                     height: 300,
                     width: 300,
@@ -194,9 +188,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       Expanded(child: NumeroGrid(GridValues.grid2, GridValues.grid8, GridValues.grid4)),
                     ]),
                   ),
-                ))
-              ]))
-            ]),
+                )
+
+
           ),
           Column(
             children: [
@@ -210,9 +204,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   Expanded(child: _getClearButton()),
                   Container(
                     width: 50,
-                  )
+                  ),
                 ],
               ),
+              Row(
+                children: [
+                  Text("")
+                ],
+              ),
+              Row(
+                children: [
+                  Text("")
+                ],
+              )
             ],
           )
         ],
