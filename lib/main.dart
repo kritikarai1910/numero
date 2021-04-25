@@ -32,8 +32,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   var _gridList = List<String>.filled(10, '');
 
   String text = "";
@@ -132,10 +130,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   )
                 ],
               ),
-              Expanded(child: Container(
-                height: 50,
-                  child: NumeroDatePicker(myController)
-              )),
+              Expanded(
+                  child: Container(
+                      height: 50, child: NumeroDatePicker(myController))),
               Column(
                 children: [
                   Container(
@@ -177,20 +174,42 @@ class _MyHomePageState extends State<MyHomePage> {
               )
             ],
           ),
-          Expanded(
-           child: Center(
+          Row(
+            children: [
+              Expanded(
                   child: Container(
-                    height: 300,
-                    width: 300,
-                    child: Column(children: [
-                      Expanded(child: NumeroGrid(GridValues.grid3,GridValues.grid1, GridValues.grid9)),
-                      Expanded(child: NumeroGrid(GridValues.grid6, GridValues.grid7, GridValues.grid5)),
-                      Expanded(child: NumeroGrid(GridValues.grid2, GridValues.grid8, GridValues.grid4)),
-                    ]),
-                  ),
-                )
-
-
+                height: 50,
+              )),
+              Column(
+                children: [Text("Dasha number", style: TextStyle(fontSize: 10),),
+                  Text("Year number", style: TextStyle(fontSize: 10))],
+              ),
+              Container(
+                height: 50,
+                width: 50,
+              )
+            ],
+          ),
+          Expanded(
+              child: Center(
+            child: Container(
+              height: 300,
+              width: 300,
+              child: Column(children: [
+                Expanded(
+                    child: NumeroGrid(
+                        GridValues.grid3, GridValues.grid1, GridValues.grid9)),
+                Expanded(
+                    child: NumeroGrid(
+                        GridValues.grid6, GridValues.grid7, GridValues.grid5)),
+                Expanded(
+                    child: NumeroGrid(
+                        GridValues.grid2, GridValues.grid8, GridValues.grid4)),
+              ]),
+            ),
+          )),
+          Row(
+            children: [Text("")],
           ),
           Column(
             children: [
@@ -208,15 +227,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
               Row(
-                children: [
-                  Text("")
-                ],
+                children: [Text("")],
               ),
-              Row(
-                children: [
-                  Text("")
-                ],
-              )
             ],
           )
         ],
